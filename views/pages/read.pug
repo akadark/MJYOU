@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    h1= title
+    hr
+    h2= docs.professor
+    h3= docs.course
+    hr
+    p Professor Score: 
+      =docs.ratingProfessor
+    hr
+    p Course Score: 
+      =docs.ratingCourse
+    hr
+    p Difficulty: 
+      =docs.difficulty
+    hr
+    p Would you take this prof again? 
+      =docs.question1
+    hr
+    p Text book use? 
+      =docs.question2
+    hr
+    p Description: 
+      =docs.description
+
+    //-each doc in docs
+    //-    h1= doc.course
+        
+    hr
+    a.btn.btn-default.btn-mini(href='/pages/update/' + docs.id role='button') update
+    a.btn.btn-default.btn-mini(href='/pages/delete/' + docs.id role='button') delete

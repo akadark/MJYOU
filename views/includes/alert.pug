@@ -1,0 +1,9 @@
+if flash
+  if flash.error 
+    div.alert.alert-danger.alert-dismissible.fade-in(role="alert")
+      h3 Error
+      p= flash.error
+  if flash.notice 
+    div.alert.alert-success.alert-dismissible.fade-in(role="alert")
+      h3 Notice
+      p= flash.notice

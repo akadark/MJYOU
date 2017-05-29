@@ -1,0 +1,38 @@
+mixin textInput(name, id, label, value) 
+  div.form-group
+    label.label.label-primary(for=name+"-id")= label
+    input.form-control(type='text', name=name, id=name+"-id", value=value)
+
+mixin select(name, label, value)
+  .form-group
+    label.label.label-primary(for=name)= label
+    select.form-control(name=name)
+      option(value='Select', select= true) -- Select --
+      option(value='Very easy', select= true) Very easy
+      option(value='Easy', select= true) Easy
+      option(value='Normal', select= true) Normal
+      option(value='Hard', select= true) Hard
+      option(value='Very hard', select= true) Very hard
+      
+mixin textarea(name, id, label, value)
+  div.form-group
+    label.label.label-primary(for=name+"-id")= label
+    textarea.form-control(type='text', name=name, id=name+"-id", value=value)
+    
+mixin fieldset(label, value, name)
+  label(for= "rating"+value)= label
+    input(type="radio", value=value, id= "rating"+value, name=name)
+    span(aria-hidden="true")
+
+//-
+  .glyhicon.glyphicon-star-empty
+  
+  mixin fieldset-course(label, value)
+  label(for= "rating-course"+value)= label
+    input(id= "rating-course"+value, type="radio", name= "rating"+value, value=value)
+    span(aria-hidden="true")
+    
+  mixin fieldset-professor(label, value)
+  label(for= "rating-professor"+value)= label
+    input(id= "rating-professor"+value, type="radio", name= "rating"+value, value=value)
+    span(aria-hidden="true")

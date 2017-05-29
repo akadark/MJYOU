@@ -1,0 +1,45 @@
+extends ../layout
+include ../mixins/form
+
+block content
+  h1= title 
+  p Your simple typing make the better world
+  hr
+  form(method='POST', action="/pages/update/" + docs.id)
+    //- fieldset(label, value, name)
+    legend Rate this Course
+    +fieldset('★☆☆☆☆', '★☆☆☆☆', 'ratingCourse')
+    +fieldset('★★☆☆☆', '★★☆☆☆', 'ratingCourse')
+    +fieldset('★★★☆☆', '★★★☆☆', 'ratingCourse')
+    +fieldset('★★★★☆', '★★★★☆', 'ratingCourse')
+    +fieldset('★★★★★', '★★★★★', 'ratingCourse')
+    //- fieldset(label, value, name)
+    legend Rate this Professor
+    +fieldset('★☆☆☆☆', '★☆☆☆☆', 'ratingProfessor')
+    +fieldset('★★☆☆☆', '★★☆☆☆', 'ratingProfessor')
+    +fieldset('★★★☆☆', '★★★☆☆', 'ratingProfessor')
+    +fieldset('★★★★☆', '★★★★☆', 'ratingProfessor')
+    +fieldset('★★★★★', '★★★★★', 'ratingProfessor')
+    hr
+    
+    //- textInput(name, id, label, value)
+    +textInput('course', 'id', 'Course', docs.course)
+    //- textInput(name, id, label, value)
+    +textInput('professor', 'id', 'Professor', docs.professor)
+    +select('difficulty', 'Difficulty', docs.value)
+    
+    //- fieldset(label, value)
+    legend Would you take this prof again?
+    +fieldset('Yes', 'Yes', 'question1')
+    +fieldset('No', 'No', 'question1')
+    
+    //- fieldset(label, value)  
+    legend Text book use
+    +fieldset('Yes', 'Yes', 'question2')
+    +fieldset('No', 'No', 'question2')
+    hr
+    //- textarea(name, id, label, value)
+    +textarea('description', 'id', 'Description', docs.description)
+    
+    input.input-group(type="submit")
+    br
