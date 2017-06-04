@@ -2,7 +2,7 @@ doctype html
 html(lang='en')
   head
     // Theme Made By www.w3schools.com - No Copyright
-    title ratemyprofessor - korea
+    title MJYou
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
@@ -209,9 +209,13 @@ html(lang='en')
               a(href='#pricing') PRICING
             li
               a(href='#contact') CONTACT
+            li 
+              a(href='/login') LOGIN
+            li 
+              a(href='/users/new') SIGN UP 
     .jumbotron.text-center
       include includes/alert
-      h1 RateMyProfessor - Korea
+      a.h1(href='/') MJYou
       p Search class information you want
         form(action="/pages/search", method='POST')
           .input-group

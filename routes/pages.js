@@ -1,31 +1,47 @@
-"use strict";
-var Page = require('../models/page.js');
+var express = require('express');
+var Page = require('../models/page');
+var router = express.Router();
 
-exports.index = function(req, res) {
-  let flash = {
-    notice: req.flash('notice')[0],
-    error: req.flash('error')[0]
-  }
-
-  Page.find(function(err, docs) {
-    if (err) {
-      flash.error = "There was an error locating your pages"
-    }
-
-    res.render("pages/index", {
-      docs: docs,
-      flash: flash,
+router.get('/', function(req, res, next) {
+  res.render("pages/index", {
+      //docs: docs,
+      //flash: flash,
       title: 'Reviews'
-    });
   });
-};
+})
 
-exports.about = function(req, res) {
-  res.render("pages/about", {
-    flash: {},
-    title: 'About Page'
-  })
-};
+// exports.index = function(req, res) {
+//   let flash = {
+//     notice: req.flash('notice')[0],
+//     error: req.flash('error')[0]
+//   }
+
+//   Page.find(function(err, docs) {
+//     if (err) {
+//       flash.error = "There was an error locating your pages"
+//     }
+
+//     res.render("pages/index", {
+//       docs: docs,
+//       flash: flash,
+//       title: 'Reviews'
+//     });
+//   });
+// };
+
+// exports.about = function(req, res) {
+//   res.render("pages/about", {
+//     flash: {},
+//     title: 'About Page'
+//   })
+// };
+router.get('/about', function(req, res, next) {
+    res.render("pages/about", {
+      flash: {},
+      title: 'About Page'
+    })
+  }
+)
 
 exports.createForm = function(req, res) {
   res.render("pages/create", {
@@ -193,3 +209,5 @@ exports.search = function(req, res, next) {
     }
   });
 };
+
+module.exports = router;

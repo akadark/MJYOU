@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose');
 var app = require('../app');
 var debug = require('debug')('node-express-01:server');
 var http = require('http');
@@ -88,11 +87,3 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-
-var DBurl = 'mongodb://localhost/local';
-mongoose.connect(DBurl);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log("Connected to MongoDB @" + port + "/local");
-});
