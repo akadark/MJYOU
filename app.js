@@ -10,7 +10,6 @@ var flash = require('connect-flash');
 var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
-//var index = require('./routes/index');
 var users = require('./routes/users');
 var pages = require('./routes/pages');
 
@@ -31,6 +30,10 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log("Connected to MongoDB @" + 'port'+ "/local");
+});
+mongoose.connection.on("SIGINT",function(){
+  console.log('MongoDB disconnected due to Application Exit');
+  process.exit(0);
 });
 
 // uncomment after placing your favicon in /public
@@ -58,7 +61,7 @@ app.use(function(req, res, next){
     next();
 });
 
-app.use('/', routes);
+app.use('/', routes); // var routes = require('./routes/index');
 app.use('/users', users);
 app.use('/pages', pages);
 

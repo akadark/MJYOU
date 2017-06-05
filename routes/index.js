@@ -1,11 +1,19 @@
 var express = require('express');
-var Page = require('../models/page');
+var Page = require('../models/Page');
 var User = require('../models/User');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  Page.find(function(err, docs) {
+    if (err) {
+      //flash.error = "There was an error locating your pages"
+    }
+    res.render('index', {
+      docs: docs,
+      //flash: flash,
+    });
+  });
 })
 
 router.get('/login', function(req, res, next) {

@@ -70,8 +70,8 @@ block content
   hr
   // Container (Review Section)
   #review.container-fluid
-    .row.slideanim
-      h1= title
+    .row
+      h1 Reviews
       hr
       .col-md-offset-10
         a.btn.btn-default.btn-lg(href='/pages/create' role='button') Create New Review
@@ -84,6 +84,7 @@ block content
                 =doc.professor
                 |  - 
                 =doc.ratingCourse
+          a.btn.btn-default.btn-lg(href='/pages/index' role='button') View more
         else 
           h3 We can't find any matching data!
     

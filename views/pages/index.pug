@@ -1,4 +1,19 @@
 extends ../layout
 
 block content
+  .row
     h1= title
+    hr
+    .col-md-offset-10
+      a.btn.btn-default.btn-lg(href='/pages/create' role='button') Create New Review
+    ul
+      if(docs != null)
+        each doc in docs
+          li 
+            a(href="/pages/view/" + doc.id)= doc.course 
+              |  - 
+              =doc.professor
+              |  - 
+              =doc.ratingCourse
+      else 
+        h3 We can't find any matching data!
