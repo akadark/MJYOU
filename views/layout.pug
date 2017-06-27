@@ -209,10 +209,19 @@ html(lang='en')
               a(href='#pricing') PRICING
             li
               a(href='#contact') CONTACT
-            li 
-              a(href='/login') LOGIN
-            li 
-              a(href='/users/new') SIGN UP 
+            if (!currentUser)
+              li 
+                a(href='/login') LOGIN
+              li 
+                a(href='/users/create') SIGN UP
+            else
+                li
+                  a(href='/users/' + currentUser._id) PROFILE
+                li
+                  a(href='/logout') LOGOUT
+              
+            
+            
     .jumbotron.text-center
       include includes/alert
       a.h1(href='/') MJYou
